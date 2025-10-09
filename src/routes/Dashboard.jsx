@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import "../style/Dashboard.css";
 import logo from "../assets/logo.jpg";
+import { Overview } from "../components/Overview";
+import "../style/Overview.css";
 
 export const Dashboard = () => {
   const services = [
-    { id: 1, name: "Overview" },
+    { id: 1, name: "Overview", view : <Overview/>},
     { id: 2, name: "Appointments" },
     { id: 3, name: "Patients" },
     { id: 4, name: "Medicine Inventory" },
@@ -72,6 +74,7 @@ export const Dashboard = () => {
           </div>
         </div>
         <div className="dashboard-content">
+          {services.find((s) => s.id === active)?.view}
         </div>
       </div>
     </div>
