@@ -3,11 +3,12 @@ import "../style/Dashboard.css";
 import logo from "../assets/logo.jpg";
 import { Overview } from "../components/Overview";
 import "../style/Overview.css";
+import { AppointmentManagement } from "../components/AppointmentManagement";
 
 export const Dashboard = () => {
   const services = [
     { id: 1, name: "Overview", view : <Overview/>},
-    { id: 2, name: "Appointments" },
+    { id: 2, name: "Appointments" , view : <AppointmentManagement/>},
     { id: 3, name: "Patients" },
     { id: 4, name: "Medicine Inventory" },
     { id: 7, name : "Billing & Invoices"},
