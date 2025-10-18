@@ -2,40 +2,25 @@ import React, { useState } from "react";
 import "../style/Dashboard.css";
 import logo from "../assets/logo.jpg";
 import { Overview } from "../components/Overview";
-import "../style/Overview.css";
 import { AppointmentManagement } from "../components/AppointmentManagement";
+import { NotificationBell } from "../components/NotificationBell";
+import { Profile } from "../components/Profile";
 
 export const Dashboard = () => {
   const services = [
-    { id: 1, name: "Overview", view : <Overview/>},
-    { id: 2, name: "Appointments" , view : <AppointmentManagement/>},
+    { id: 1, name: "Overview", view: <Overview /> },
+    { id: 2, name: "Appointments", view: <AppointmentManagement /> },
     { id: 3, name: "Patients" },
     { id: 4, name: "Medicine Inventory" },
-    { id: 7, name : "Billing & Invoices"},
     { id: 5, name: "Laboratory" },
+    { id: 6, name: "Billing & Invoices" },
   ];
 
   const [active, setActive] = useState(1);
 
-  const Notification = ()=>{
-    return(
-        <div className="row">
-            <p>Notification</p>
-        </div>
-    )
-  }
-
-  const Profile = ()=>{
-    return(
-        <div className="row">
-            <p>Profile</p>
-        </div>
-    )
-  }
-
   return (
     <div className="row">
-      <div className="col-xl-2 left-side">
+      <div className="left-side">
         <div>
           <div className="left-side-header">
             <img src={logo} alt="Logo" className="logo" />
@@ -59,21 +44,16 @@ export const Dashboard = () => {
           <button className="logout-btn">Log Out</button>
         </div>
       </div>
-      
-      <div className="col-xl-8 right-side">
-        <div className="dashboard-header d-flex">
-          <div className="col-xl-10">
-            {services.find((s) => s.id === active)?.name}
-          </div>
-          <div className="col-xl-2 d-flex">
-            <div className="notification">
-                <Notification/>
-            </div>
-            <div className="profile">
-                <Profile/>
-            </div>
+
+      <div className="right-side">
+        <div className="dashboard-header">
+          <h2>{services.find((s) => s.id === active)?.name}</h2>
+          <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+            <NotificationBell />
+            <Profile />
           </div>
         </div>
+
         <div className="dashboard-content">
           {services.find((s) => s.id === active)?.view}
         </div>
