@@ -19,7 +19,7 @@ export const Dashboard = () => {
   const [active, setActive] = useState(1);
 
   return (
-    <div className="row">
+    <div className="row" style={{height : "100vh"}}>
       <div className="left-side">
         <div>
           <div className="left-side-header">

@@ -46,8 +46,8 @@ export const AppointmentManagement = ()=>{
 
     const Header  = ()=>{
         return(
-            <div className="row">
-                <div className="col-xl-5 d-flex ps-3 pe-3">
+            <div>
+                <div className="col-xl-5 d-flex">
                     {filters.map((filter)=>(
                         <button className="filter-btn" onClick={()=>handleChangeFilter(filter.value)}>{filter.name}</button>
                     ))}
@@ -93,11 +93,9 @@ export const AppointmentManagement = ()=>{
         )
     }
     return(
-        <div className="row" style={{
-            width : "100%",
-            height : "80vh"
-        }}>
+        <div className="row">
             {/**<Header/>**/}
+            <Header/>
             <AppointmentsTable/>
         </div>
     )
