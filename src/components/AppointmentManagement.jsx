@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Appointment.css";
 import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@mui/material"
 import axios from "axios";
+import { NewAppointmentDialog } from "./dialog/NewAppointmentDialog";
 
 export const AppointmentManagement = ()=>{
 
@@ -14,6 +15,9 @@ export const AppointmentManagement = ()=>{
     const [appointments,setAppointments] = useState([]);
     const [currentFilter,setCurrentFilter] = useState("All");
     const [loading,setLoading] = useState(false);
+    const [newAppointmentDialogOpen,setNewAppointmentDialogOpen] = useState(false);
+
+    
 
     const handleChangeFilter = (filter) =>{
         setCurrentFilter(filter);
@@ -40,20 +44,28 @@ export const AppointmentManagement = ()=>{
 
     useEffect(()=>{
         fetchAppointments();
-    },[])
+    },[]);
+
+    const handleOpenNewAppointmentDialog = ()=>{
+        setNewAppointmentDialogOpen(true);
+    }
+
+    const handleCloseNewAppointmentDialog = ()=>{
+        setNewAppointmentDialogOpen(false);
+    }
 
 
 
     const Header  = ()=>{
         return(
-            <div>
+            <div className="row">
                 <div className="col-xl-5 d-flex">
                     {filters.map((filter)=>(
                         <button className="filter-btn" onClick={()=>handleChangeFilter(filter.value)}>{filter.name}</button>
                     ))}
                 </div>
-                <div className="col-xl-7">
-
+                <div className="col-xl-7 d-flex">
+                    <button className="btn btn-primary" onClick={handleOpenNewAppointmentDialog}>Schedule next Appointment</button>
                 </div>
             </div>
         )
@@ -97,6 +109,7 @@ export const AppointmentManagement = ()=>{
             {/**<Header/>**/}
             <Header/>
             <AppointmentsTable/>
+            <NewAppointmentDialog open={newAppointmentDialogOpen} onClose={handleCloseNewAppointmentDialog}/>
         </div>
     )
 }
