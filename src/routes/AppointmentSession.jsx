@@ -2,9 +2,11 @@ import { useEffect, useState } from "react"
 import { startAppointment } from "../services/AppointmentService";
 import { useLocation } from "react-router-dom";
 
-export const AppointmentSession = ({appointmentId})=>{
+export const AppointmentSession = ()=>{
 
     const location = useLocation();
+
+    const appointment = location?.state.appointmentDetails;
     const [timeLeft,setTimeLeft] = useState(location.state?.duration);
     return(
         <div className="row">

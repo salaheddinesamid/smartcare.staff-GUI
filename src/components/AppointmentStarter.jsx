@@ -19,7 +19,7 @@ export const AppointmentStarter = ({appointmentId})=>{
             const {appointmentId, duration} = response.data;
 
             // Navigate to session page:
-            navigate(`/appointment/session/${appointmentId}`, {duration : duration});
+            navigate(`/appointment/session/${appointmentId}`, {duration, response});
         }
         catch(err){
             console.error(err);
