@@ -64,9 +64,6 @@ export const AppointmentManagement = ()=>{
                         <button className="filter-btn" onClick={()=>handleChangeFilter(filter.value)}>{filter.name}</button>
                     ))}
                 </div>
-                <div className="col-xl-7 d-flex">
-                    <button className="btn btn-primary" onClick={handleOpenNewAppointmentDialog}>Schedule next Appointment</button>
-                </div>
             </div>
         )
     }
@@ -106,7 +103,6 @@ export const AppointmentManagement = ()=>{
     }
     return(
         <div className="row">
-            {/**<Header/>**/}
             <Header/>
             <AppointmentsTable/>
             <NewAppointmentDialog open={newAppointmentDialogOpen} onClose={handleCloseNewAppointmentDialog}/>

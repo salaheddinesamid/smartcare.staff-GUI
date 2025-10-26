@@ -10,11 +10,18 @@ import {
   Typography,
   Grid,
 } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { searchPatientsByName } from "../../services/PatientService";
 
 export const NewAppointmentDialog = ({ open, onClose }) => {
   const [patient, setPatient] = useState(null);
+
+  const [patients,setPatients] = useState([]);
+  const [patientNameSearch,setPatientNameSearch] = useState("");
+  const [loadingPatients,setLoadingPatients] = useState(false);
+
+
   const [newAppointmentDto, setNewAppointmentDto] = useState({
     patientId: patient?.id || null,
     patientNationalId: "",
@@ -32,6 +39,10 @@ export const NewAppointmentDialog = ({ open, onClose }) => {
     { id: 4, name: "Heart Disease" },
   ];
 
+  const appointmentTypes = [
+    { id: 1, name: "Consulation", value: "CONSULTATION"}
+  ]
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setNewAppointmentDto((prev) => ({
@@ -40,14 +51,46 @@ export const NewAppointmentDialog = ({ open, onClose }) => {
     }));
   };
 
+  // This function will handle patient search
   const handlePatientSearch = () => {
     // Implement search logic here
+
+    try{
+      //const response = await get
+    }catch(err){
+
+    }
+    finally{
+
+    }
   };
 
   const handleSubmit = () => {
     console.log(newAppointmentDto);
     onClose();
   };
+
+  // This function will render the results of searched patients
+  const SearchedPatients = ()=>{
+    return(
+      <div className="row">
+
+      </div>
+    )
+  }
+
+  // Debounced search effect:
+  useEffect(()=>{
+    const delayDebounce = setTimeout(()=>{
+      if(patientNameSearch.trim().length > 0){
+      handlePatientSearch(patientNameSearch);
+    }else{
+      setPatients([]);
+    }
+    },500);
+
+    return ()=> clearTimeout(delayDebounce);
+  },[patientNameSearch])
 
   return (
     <Dialog
@@ -76,8 +119,8 @@ export const NewAppointmentDialog = ({ open, onClose }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
         >
-          <Grid container spacing={2} alignItems="center">
-            <Grid item xs={8}>
+          <div className="row" style={{margin : "4px"}}>
+            <div className="col">
               <TextField
                 label="Patient Full Name or National ID"
                 fullWidth
@@ -86,8 +129,8 @@ export const NewAppointmentDialog = ({ open, onClose }) => {
                 onChange={handleChange}
                 variant="outlined"
               />
-            </Grid>
-            <Grid item xs={4}>
+            </div>
+            <div className="col">
               <Button
                 onClick={handlePatientSearch}
                 variant="contained"
@@ -102,10 +145,10 @@ export const NewAppointmentDialog = ({ open, onClose }) => {
               >
                 Search Patient
               </Button>
-            </Grid>
-          </Grid>
-          <Grid container spacing={2} sx={{ mt: 3 }}>
-            <Grid item xs={6}>
+            </div>
+          </div>
+          <div className="row" style={{margin : "4px"}}>
+            <div className="col">
               <TextField
                 select
                 label="Select Disease"
@@ -120,8 +163,8 @@ export const NewAppointmentDialog = ({ open, onClose }) => {
                   </MenuItem>
                 ))}
               </TextField>
-            </Grid>
-            <Grid item xs={6}>
+            </div>
+            <div className="col">
               <TextField
                 label="Start Date"
                 type="date"
@@ -131,8 +174,30 @@ export const NewAppointmentDialog = ({ open, onClose }) => {
                 fullWidth
                 InputLabelProps={{ shrink: true }}
               />
-            </Grid>
-          </Grid>
+            </div>
+          </div>
+
+          <div className="row" style={{margin : "4px"}}>
+            <div className="col">
+              <TextField
+                select
+                label="Appointment Type"
+                name="appointmentType"
+                value={newAppointmentDto.appointmentType}
+                onChange={handleChange}
+                fullWidth
+              >
+                {appointmentTypes.map((t) => (
+                  <MenuItem key={t.id} value={t.value}>
+                    {t.name}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </div>
+            <div className="col"></div>
+          </div>
+
+          { /**
           <Grid container spacing={2} sx={{ mt: 3 }}>
             <Grid item xs={12}>
               <TextField
@@ -144,34 +209,7 @@ export const NewAppointmentDialog = ({ open, onClose }) => {
                 fullWidth
               />
             </Grid>
-          </Grid>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              mt: 4,
-            }}
-          >
-            <Typography variant="body1" sx={{ fontWeight: 500 }}>
-              Prescription details can be added after confirming appointment.
-            </Typography>
-            <Button
-              variant="outlined"
-              sx={{
-                borderColor: "#1565c0",
-                color: "#1565c0",
-                textTransform: "none",
-                "&:hover": {
-                  backgroundColor: "#1565c0",
-                  color: "white",
-                },
-              }}
-            >
-              Add Prescription
-            </Button>
-          </Box>
-
+          </Grid> */}
           <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 4 }}>
             <Button
               onClick={handleSubmit}
