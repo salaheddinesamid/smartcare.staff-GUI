@@ -85,7 +85,7 @@ export const AppointmentManagement = ()=>{
                         </TableHead>
 
                         <TableBody>
-                            {appointments && appointments.map((appointment)=>(
+                            {appointments.length !== 0 ? appointments.map((appointment)=>(
                                 <TableRow>
                                     <TableCell>{appointment.startDate}</TableCell>
                                     <TableCell>{appointment.doctorInformation.firstName}</TableCell>
@@ -94,7 +94,11 @@ export const AppointmentManagement = ()=>{
                                     <TableCell></TableCell>
                                     <TableCell></TableCell>
                                 </TableRow>
-                            ))}
+                            )): <div className="row">
+                                  <div className="col-xl-12">
+                                    <p className="text-center">No records found</p>
+                                  </div>
+                                </div>}
                         </TableBody>
                     </Table>
                 </TableContainer>
