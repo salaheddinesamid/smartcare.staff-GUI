@@ -6,13 +6,14 @@ import { AppointmentManagement } from "../components/AppointmentManagement";
 import { NotificationBell } from "../components/NotificationBell";
 import { Profile } from "../components/Profile";
 import { PatientManagement } from "../components/PatientManagement";
+import { MedicineInventory } from "../components/MedicineInventory";
 
 export const Dashboard = () => {
   const services = [
     { id: 1, name: "Overview", view: <Overview /> },
     { id: 2, name: "Appointments", view: <AppointmentManagement /> },
     { id: 3, name: "Patients" , view: <PatientManagement/>},
-    { id: 4, name: "Medicine Inventory" },
+    { id: 4, name: "Medicine Inventory", view: <MedicineInventory/> },
     { id: 5, name: "Laboratory" },
     { id: 6, name: "Billing & Invoices" },
   ];
