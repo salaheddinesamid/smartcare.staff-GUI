@@ -23,9 +23,19 @@ export const MedicineInventory = () => {
   const [loading, setLoading] = useState(false);
   const [medicines, setMedicines] = useState([]);
   const [filteredMedicines, setFilteredMedicines] = useState([]);
+  const [currentFilter,setCurrentFilter] = useState("ALL")
   const [searchQuery, setSearchQuery] = useState("");
   const [error, setError] = useState(null);
   const [addNewMedicineDialogOpen, setAddNewMedicineDialogOpen] = useState(false);
+
+  const filters = [
+    {id: 1, name: "All", value : "ALL"},
+    {id: 2, name: "Available", value : "AVAILABLE"},
+    {id: 3, name: "Suspended", value: "SUSPENDED"},
+    {id: 4, name: "Unavailable", value: "UNAVAILABLE"},
+    {id: 5, name: "Out of Stock", value: "OUT_OF_STOCK"},
+
+  ]
 
   const fetchMedicines = async () => {
     try {
@@ -56,6 +66,12 @@ export const MedicineInventory = () => {
     );
   };
 
+  const handleFilterChange = (filter) => {
+    setCurrentFilter(filter);
+    if (filter === "ALL") setFilteredMedicines(medicines);
+    else setFilteredMedicines(medicines.filter((a) => a.status === filter));
+  };
+
   const handleMedicineAdded = (newMedicine) => {
     setMedicines((prev) => [newMedicine, ...prev]);
     setFilteredMedicines((prev) => [newMedicine, ...prev]);
@@ -84,10 +100,10 @@ export const MedicineInventory = () => {
         }}
       >
 
-        <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
+        <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap", alignItems: "center" }}>
           <TextField
             size="small"
-            placeholder="Search by name or Ref N°"
+            placeholder="Search by Medicine name, Ref N°..."
             value={searchQuery}
             onChange={handleSearch}
             InputProps={{
@@ -96,9 +112,27 @@ export const MedicineInventory = () => {
             sx={{
               backgroundColor: "white",
               borderRadius: 2,
-              width: { xs: "100%", sm: 250 },
+              width: { xs: "100%", sm: 280 },
             }}
           />
+
+          <Box sx={{ display: "flex", gap: 1, flexWrap: "wrap" }}>
+            {filters.map((f) => (
+              <Button
+                key={f.id}
+                variant={currentFilter === f.value ? "contained" : "outlined"}
+                size="small"
+                onClick={() => handleFilterChange(f.value)}
+                sx={{
+                  borderRadius: 3,
+                  textTransform: "none",
+                  fontWeight: 500,
+                }}
+              >
+                {f.name}
+              </Button>
+            ))}
+          </Box>
           <Tooltip title="Add new medicine">
             <Button
               variant="contained"
