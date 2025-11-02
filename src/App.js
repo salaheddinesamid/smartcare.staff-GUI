@@ -14,7 +14,7 @@ function App() {
       <Routes>
         <Route path='/login' element={<Login/>}/>
         <Route path='/' element={<Dashboard/>}/>
-        <Route path='/appointment/session' element={<AppointmentSession/>}/>
+        <Route path='/appointment/session-start/:appointmentId' element={<AppointmentSession/>}/>
       </Routes>
       </BrowserRouter>
     </div>

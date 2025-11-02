@@ -14,3 +14,8 @@ export const startAppointment = async(appointmentId)=>{
     const response = await AppointmentAPI.put()
     return response.data;
 }
+
+export const endAppointmentSession = async(appointmentId)=>{
+    const response = await AppointmentAPI.put();
+    return response.status;
+}
