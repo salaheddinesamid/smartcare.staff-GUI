@@ -72,6 +72,7 @@ export const MedicineInventory = () => {
               <TableCell>Manufacturing Date</TableCell>
               <TableCell>Expiration Date</TableCell>
               <TableCell>Status</TableCell>
+              <TableCell>Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

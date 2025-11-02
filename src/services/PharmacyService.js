@@ -9,3 +9,8 @@ export const addNewMedicine = async(requestDto)=>{
     const response = await PharmacyAPI.post("/api/pharmacy/add-medicine",requestDto);
     return response.status;
 }
+
+export const removeMedicine = async()=>{
+    const response = await PharmacyAPI.delete();
+    return response.status;
+}
