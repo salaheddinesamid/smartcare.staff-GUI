@@ -176,7 +176,7 @@ export const AppointmentManagement = () => {
                   hover
                   sx={{
                     "&:hover": { backgroundColor: "#f0f4ff" },
-                    transition: "0.2s",
+                    transition: "2s",
                   }}
                 >
                   <TableCell>
