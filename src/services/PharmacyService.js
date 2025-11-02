@@ -4,3 +4,8 @@ export const getAllMedicines = async()=>{
     const response = await PharmacyAPI.get("/api/pharmacy/get_all");
     return response.data;
 }
+
+export const addNewMedicine = async(requestDto)=>{
+    const response = await PharmacyAPI.post("/api/pharmacy/add-medicine",requestDto);
+    return response.status;
+}

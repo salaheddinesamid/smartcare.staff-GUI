@@ -7,14 +7,18 @@ import {
   TableRow,
   Paper,
   Typography,
+  Button,
 } from "@mui/material";
+import AddIcon from '@mui/icons-material/Add';
 import { useEffect, useState } from "react";
 import { getAllMedicines } from "../services/PharmacyService";
+import { NewMedicineDialog } from "./dialog/NewMedicineDialog";
 
 export const MedicineInventory = () => {
   const [loading, setLoading] = useState(false);
   const [medicines, setMedicines] = useState([]);
   const [error, setError] = useState(null);
+  const [addNewMedicineDialogOpen,setAddNewMedicineDialogOpen] = useState(false);
 
   const fetchMedicines = async () => {
     try {
@@ -29,12 +33,23 @@ export const MedicineInventory = () => {
     }
   };
 
+  const handleAddNewMedicineDialog = ()=>{
+    setAddNewMedicineDialogOpen(true);
+  }
+
+  const handleCloseDialog = ()=>{
+    setAddNewMedicineDialogOpen(false);
+  }
+
   useEffect(() => {
     fetchMedicines();
   }, []);
 
   return (
     <Paper elevation={3} style={{ padding: 20, marginTop: 20 }}>
+        <Button onClick={handleAddNewMedicineDialog}>
+            <AddIcon/>
+        </Button>
       {loading && (
         <div style={{ textAlign: "center", padding: "20px" }}>
           <CircularProgress />
@@ -93,6 +108,7 @@ export const MedicineInventory = () => {
           </TableBody>
         </Table>
       )}
+      <NewMedicineDialog open={addNewMedicineDialogOpen} onClose={handleCloseDialog}/>
     </Paper>
   );
 };
