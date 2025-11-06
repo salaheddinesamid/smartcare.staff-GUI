@@ -9,6 +9,7 @@ import {
   Box,
   Stack,
 } from "@mui/material";
+import { NewPrescriptionDialog } from "../components/dialog/NewPrescriptionDialog";
 
 export const AppointmentSession = () => {
   const location = useLocation();
@@ -129,6 +130,7 @@ export const AppointmentSession = () => {
           </Button>
         </Box>
       </Stack>
+      <NewPrescriptionDialog open={true}/>
     </Paper>
   );
 };

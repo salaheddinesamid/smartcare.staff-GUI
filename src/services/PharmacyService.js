@@ -14,3 +14,14 @@ export const removeMedicine = async()=>{
     const response = await PharmacyAPI.delete();
     return response.status;
 }
+
+export const searchMedicine = async(searchQuery)=>{
+    const response = await PharmacyAPI.get("/api/pharmacy/search",{
+        params : {
+            name: searchQuery,
+            refNumber : searchQuery
+        }
+    })
+
+    return response.data;
+}
