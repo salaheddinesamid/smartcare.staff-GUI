@@ -6,17 +6,23 @@ import { getPatients } from "../services/PatientService";
 export const PatientManagement = ()=>{
 
     const [patients,setPatients] = useState([]);
+    const [loading,setLoading] = useState(false);
+
+    const fetchPatients = async()=>{
+        try{
+            setLoading(true);
+            const res = await getPatients();
+            setPatients(res.data);
+        }
+        catch(err){
+            console.log(err);
+        }
+        finally{
+            setLoading(false);
+        }
+    };
 
     useEffect(()=>{
-        const fetchPatients = async()=>{
-            try{
-                const data = await getPatients();
-                console.log(data);
-            }catch(err){
-
-            }
-        };
-
         fetchPatients();
     },[])
 
