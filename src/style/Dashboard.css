@@ -8,14 +8,101 @@ html, body {
 }
 
 .left-side {
-  width: 220px; /* fixed sidebar width */
-  background: #ffffff;
+  width: 260px;
+  background-color: #ffffff;
+  border-right: 1px solid #e0e0e0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 20px 0;
-  border-right: 1px solid #e0e0e0;
-  box-shadow: 2px 0 8px rgba(0,0,0,0.05);
+  padding: 15px 0;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease-in-out;
+  overflow-y: auto;
+}
+
+.left-side-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 10px rgba(21, 101, 192, 0.2);
+}
+
+.left-side-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0 10px;
+}
+
+.sidebar-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: transparent;
+  border: none;
+  color: #444;
+  font-weight: 500;
+  padding: 10px 15px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  text-align: left;
+}
+
+.sidebar-btn svg {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.2s ease-in-out, color 0.2s;
+}
+
+.sidebar-btn:hover {
+  background-color: #f5f9ff;
+  color: #1565c0;
+}
+
+.sidebar-btn:hover svg {
+  color: #1565c0;
+  transform: scale(1.1);
+}
+
+.sidebar-btn.active {
+  background: linear-gradient(135deg, #1565c0, #42a5f5);
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 3px 10px rgba(21, 101, 192, 0.3);
+}
+
+.sidebar-btn.active svg {
+  color: #fff;
+}
+
+.logout-section {
+  text-align: center;
+  padding: 10px 0;
+}
+
+.logout-btn {
+  background-color: #ef5350;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.logout-btn:hover {
+  background-color: #d32f2f;
 }
 
 .left-side-header {

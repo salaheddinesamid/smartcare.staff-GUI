@@ -7,21 +7,24 @@ import { NotificationBell } from "../components/NotificationBell";
 import { Profile } from "../components/Profile";
 import { PatientManagement } from "../components/PatientManagement";
 import { MedicineInventory } from "../components/MedicineInventory";
+import { Ambulance, ClipboardClock, FlaskConical, Landmark, LayoutDashboard, MessageSquareMore, Pill, Stethoscope } from "lucide-react";
 
 export const Dashboard = () => {
   const services = [
-    { id: 1, name: "Overview", view: <Overview /> },
-    { id: 2, name: "Appointments", view: <AppointmentManagement /> },
-    { id: 3, name: "Patients" , view: <PatientManagement/>},
-    { id: 4, name: "Medicine Inventory", view: <MedicineInventory/> },
-    { id: 5, name: "Laboratory" },
-    { id: 6, name: "Billing & Invoices" },
+    { id: 1, name: "Overview", view: <Overview />, icon:<LayoutDashboard /> },
+    { id: 2, name: "Appointments", view: <AppointmentManagement />, icon:<ClipboardClock /> },
+    { id: 3, name: "Patients" , view: <PatientManagement/>, icon:<Stethoscope />},
+    { id: 4, name: "Medicine Inventory", view: <MedicineInventory/> , icon:<Pill />},
+    { id: 5, name: "Laboratory" , view: <></>, icon: <FlaskConical />},
+    { id: 6, name: "Billing & Invoices" ,view: <></>, icon : <Landmark />},
+    { id: 7, name: "Chats" ,view: <></>, icon : <MessageSquareMore />},
+    { id: 8, name: "Emergency" ,view: <></>, icon : <Ambulance />},
   ];
 
   const [active, setActive] = useState(1);
 
   return (
-    <div className="row" style={{height : "100vh"}}>
+    <div className="d-flex" style={{height : "100vh"}}>
       <div className="left-side">
         <div>
           <div className="left-side-header">
@@ -33,17 +36,14 @@ export const Dashboard = () => {
             {services.map((service) => (
               <button
                 key={service.id}
-                className={`sidebar-btn ${active === service.id ? "active" : ""}`}
+                className={`sidebar-btn ${active === service.id ? "active" : ""} pe-2`}
                 onClick={() => setActive(service.id)}
               >
+                {service.icon} 
                 {service.name}
               </button>
             ))}
           </div>
-        </div>
-
-        <div className="logout-section">
-          <button className="logout-btn">Log Out</button>
         </div>
       </div>
 
@@ -53,6 +53,7 @@ export const Dashboard = () => {
           <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
             <NotificationBell />
             <Profile />
+            <button className="logout-btn">Log Out</button>
           </div>
         </div>
 
