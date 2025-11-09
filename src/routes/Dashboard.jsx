@@ -50,7 +50,7 @@ export const Dashboard = () => {
       <div className="right-side">
         <div className="dashboard-header">
           <h2>{services.find((s) => s.id === active)?.name}</h2>
-          <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
             <NotificationBell />
             <Profile />
             <button className="logout-btn">Log Out</button>

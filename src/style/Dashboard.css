@@ -180,15 +180,17 @@ html, body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 30px;
+  padding: 5px 30px;
   border-bottom: 1px solid #ddd;
-  background-color: #ffffff;
+  background: linear-gradient(90deg, #1565c0, #1976d2);
+  color: white;
 }
 
 .dashboard-header h2 {
   font-size: 1.8rem;
-  color: #1565c0;
+  color: white;
   margin: 0;
+  font-weight: bold;
 }
 
 .dashboard-content {
