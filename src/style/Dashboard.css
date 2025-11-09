@@ -8,7 +8,7 @@ html, body {
 }
 
 .left-side {
-  width: 260px;
+  width: 220px;
   background-color: #ffffff;
   border-right: 1px solid #e0e0e0;
   display: flex;
@@ -95,7 +95,7 @@ html, body {
   color: #fff;
   border: none;
   border-radius: 10px;
-  padding: 10px 25px;
+  padding: 0px 10px;
   cursor: pointer;
   font-weight: 600;
   transition: all 0.3s;

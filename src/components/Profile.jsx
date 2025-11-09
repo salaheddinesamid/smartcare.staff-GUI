@@ -1,6 +1,7 @@
 import { Avatar, Menu, MenuItem } from "@mui/material";
 import { useState } from "react";
 
+
 export const Profile = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);

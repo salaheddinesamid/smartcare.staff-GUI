@@ -7,12 +7,15 @@ import { NotificationBell } from "../components/NotificationBell";
 import { Profile } from "../components/Profile";
 import { PatientManagement } from "../components/PatientManagement";
 import { MedicineInventory } from "../components/MedicineInventory";
-import { Ambulance, ClipboardClock, FlaskConical, Landmark, LayoutDashboard, MessageSquareMore, Pill, Stethoscope } from "lucide-react";
+import { Ambulance, BedDouble, ClipboardClock, FlaskConical, Landmark, LayoutDashboard, MessageSquareMore, Pill, Stethoscope } from "lucide-react";
+import { RoomAllocationManagement } from "../components/RoomAllocationManagement";
+import LogoutIcon from '@mui/icons-material/Logout';
 
 export const Dashboard = () => {
   const services = [
     { id: 1, name: "Overview", view: <Overview />, icon:<LayoutDashboard /> },
     { id: 2, name: "Appointments", view: <AppointmentManagement />, icon:<ClipboardClock /> },
+    { id: 9, name: "Rooms & Allocations", view: <RoomAllocationManagement />, icon:<BedDouble /> },
     { id: 3, name: "Patients" , view: <PatientManagement/>, icon:<Stethoscope />},
     { id: 4, name: "Medicine Inventory", view: <MedicineInventory/> , icon:<Pill />},
     { id: 5, name: "Laboratory" , view: <></>, icon: <FlaskConical />},
@@ -53,7 +56,7 @@ export const Dashboard = () => {
           <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
             <NotificationBell />
             <Profile />
-            <button className="logout-btn">Log Out</button>
+            <button className="logout-btn"><LogoutIcon/></button>
           </div>
         </div>
 
