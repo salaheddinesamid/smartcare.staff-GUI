@@ -20,6 +20,7 @@ import AddIcon from "@mui/icons-material/Add";
 import SearchIcon from "@mui/icons-material/Search";
 import axios from "axios";
 import { NewAppointmentDialog } from "./dialog/NewAppointmentDialog";
+import { AppointmentStarter } from "./AppointmentStarter";
 
 export const AppointmentManagement = () => {
   const APPOINTMENT_SERVICE_URI = process.env.REACT_APP_APPOINTMENT_SERVICE;
@@ -167,6 +168,7 @@ export const AppointmentManagement = () => {
                 <TableCell sx={{ color: "white", fontWeight: 600 }}>Patient</TableCell>
                 <TableCell sx={{ color: "white", fontWeight: 600 }}>Disease</TableCell>
                 <TableCell sx={{ color: "white", fontWeight: 600 }}>Status</TableCell>
+                <TableCell sx={{ color: "white", fontWeight: 600 }}>Actions</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -205,6 +207,9 @@ export const AppointmentManagement = () => {
                       }
                       sx={{ fontWeight: 600 }}
                     />
+                  </TableCell>
+                  <TableCell>
+                    <AppointmentStarter appointmentId={appointment?.id}/>
                   </TableCell>
                 </TableRow>
               ))}
