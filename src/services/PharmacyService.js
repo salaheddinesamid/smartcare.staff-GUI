@@ -1,7 +1,7 @@
 import { PharmacyAPI } from "../api/PharmacyAPI"
 
 export const getAllMedicines = async()=>{
-    const response = await PharmacyAPI.get("/api/pharmacy/get_all");
+    const response = await PharmacyAPI.get("/api/pharmacy/medicines/get_all");
     return response.data;
 }
 
