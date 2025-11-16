@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import { Card } from "./Card";
 import { getAllDoctorAppointmentsByDate } from "../services/AppointmentService";
-import { AppointmentStarter } from "./AppointmentStarter";
+import { AppointmentStarter } from "../appointments/components/AppointmentStarter";
 
 export const Overview = () => {
   const user = { doctorId: 1 }; // Replace with actual logged-in user later

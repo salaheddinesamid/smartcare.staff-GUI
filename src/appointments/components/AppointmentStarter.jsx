@@ -2,7 +2,7 @@ import PlayCircleFilledWhiteIcon from '@mui/icons-material/PlayCircleFilledWhite
 import { Button } from '@mui/material';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { startAppointment } from '../services/AppointmentService';
+import { startAppointment } from '../../services/AppointmentService';
 
 export const AppointmentStarter = ({ID})=>{
 

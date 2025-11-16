@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import "../style/Dashboard.css";
 import logo from "../assets/logo.jpg";
-import { Overview } from "../components/Overview";
-import { AppointmentManagement } from "../components/AppointmentManagement";
-import { NotificationBell } from "../components/NotificationBell";
-import { Profile } from "../components/Profile";
-import { PatientManagement } from "../components/PatientManagement";
-import { MedicineInventory } from "../components/MedicineInventory";
+import { Overview } from "../overview/Overview";
+import { NotificationBell } from "../profile/NotificationBell";
+import { Profile } from "../profile/Profile";
 import { Ambulance, BedDouble, ClipboardClock, FlaskConical, Landmark, LayoutDashboard, MessageSquareMore, Pill, Stethoscope } from "lucide-react";
-import { RoomAllocationManagement } from "../components/RoomAllocationManagement";
 import LogoutIcon from '@mui/icons-material/Logout';
+import { AppointmentManagement } from "../appointments/AppointmentManagement";
+import { PatientManagement } from "../patients/PatientManagement";
+import { MedicineInventory } from "../pharmacy/MedicineInventory";
+import { RoomAllocationManagement } from "../allocations/RoomAllocationManagement";
 
 export const Dashboard = () => {
   const services = [

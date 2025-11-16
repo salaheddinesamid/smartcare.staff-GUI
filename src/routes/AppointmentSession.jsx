@@ -9,7 +9,7 @@ import {
   Box,
   Stack,
 } from "@mui/material";
-import { NewPrescriptionDialog } from "../components/dialog/NewPrescriptionDialog";
+import { NewPrescriptionDialog } from "../appointments/dialog/NewPrescriptionDialog";
 
 export const AppointmentSession = () => {
   const location = useLocation();

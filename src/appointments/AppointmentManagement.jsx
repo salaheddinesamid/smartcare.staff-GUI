@@ -20,7 +20,7 @@ import AddIcon from "@mui/icons-material/Add";
 import SearchIcon from "@mui/icons-material/Search";
 import axios from "axios";
 import { NewAppointmentDialog } from "./dialog/NewAppointmentDialog";
-import { AppointmentStarter } from "./AppointmentStarter";
+import { AppointmentStarter } from "./components/AppointmentStarter";
 
 export const AppointmentManagement = () => {
   const APPOINTMENT_SERVICE_URI = process.env.REACT_APP_APPOINTMENT_SERVICE;
