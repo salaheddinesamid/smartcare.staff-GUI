@@ -11,7 +11,11 @@ export const getAllDoctorAppointmentsByDate = async(doctorId,date)=>{
 }
 
 export const startAppointment = async(appointmentId)=>{
-    const response = await AppointmentAPI.put()
+    const response = await AppointmentAPI.put("/api/appointment/start-session",null,{
+        params : {
+            appointmentId : appointmentId
+        }
+    })
     return response.data;
 }
 

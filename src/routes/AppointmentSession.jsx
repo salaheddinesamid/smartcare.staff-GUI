@@ -14,14 +14,6 @@ import { NewPrescriptionDialog } from "../components/dialog/NewPrescriptionDialo
 export const AppointmentSession = () => {
   const location = useLocation();
 
-  // fallback mock
-  const MockAppointment = {
-    id: 1,
-    doctorName: "Dr. John Doe",
-    patientName: "Jane Doe",
-    startDate: "2025-11-01T10:00:00",
-    duration: 60, // in minutes
-  };
 
   const appointment = location?.state?.appointmentDetails || MockAppointment;
 
@@ -54,6 +46,8 @@ export const AppointmentSession = () => {
   // timer countdown
   useEffect(() => {
     if (timeLeft <= 0) return;
+    // if the time is over, end the session
+    if (timeLeft === 0) handleEndSession();
     const timer = setInterval(() => {
       setTimeLeft((prev) => prev - 1);
     }, 60000); // decrease every minute
@@ -130,7 +124,7 @@ export const AppointmentSession = () => {
           </Button>
         </Box>
       </Stack>
-      <NewPrescriptionDialog open={true}/>
+      <NewPrescriptionDialog open={false}/>
     </Paper>
   );
 };

@@ -4,19 +4,20 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { startAppointment } from '../services/AppointmentService';
 
-export const AppointmentStarter = ({appointmentId})=>{
+export const AppointmentStarter = ({ID})=>{
 
     const navigate = useNavigate();
-    const APPOINTMENT_SERVICE_URI = process.env.REACT_APP_APPOINTMENT_SERVICE;
 
     // Function that handles starting an appointment session
     const handleStartSession = async()=>{
         try{
+            console.log("Appointment Id:", ID)
             // Start the session in the server:
-            const response = await startAppointment(appointmentId);
+            const response = await startAppointment(ID);
+            console.log(response);
 
             // Return a server response:
-            const {appointmentId, duration} = response.data;
+            const {appointmentId, duration} = response;
 
             // Navigate to session page:
             navigate(`/appointment/session-start/${appointmentId}`, {
@@ -25,7 +26,7 @@ export const AppointmentStarter = ({appointmentId})=>{
             );
         }
         catch(err){
-            console.error(err);
+            console.error(err.data);
         }
     }
     return(

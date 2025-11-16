@@ -209,7 +209,7 @@ export const AppointmentManagement = () => {
                     />
                   </TableCell>
                   <TableCell>
-                    <AppointmentStarter appointmentId={appointment?.id}/>
+                    <AppointmentStarter ID={appointment?.appointmentId}/>
                   </TableCell>
                 </TableRow>
               ))}
