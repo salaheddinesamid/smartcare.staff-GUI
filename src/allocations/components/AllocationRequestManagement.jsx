@@ -1,7 +1,7 @@
 import { Chip, CircularProgress, Paper, Table, TableBody, TableCell, TableHead, TableRow } from "@mui/material";
 import { useEffect, useState } from "react"
 import { AllocationRequestDetails } from "../dialog/AllocationRequestDetails";
-import { getAllocationRequests } from "../../services/RoomAllocationService";
+import { getAllocationRequests } from "../../services/AllocationService";
 
 
 export const AllocationRequestManagement = ()=>{

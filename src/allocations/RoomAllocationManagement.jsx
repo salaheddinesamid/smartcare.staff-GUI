@@ -1,7 +1,4 @@
-import { Chip, CircularProgress, Paper, Table, TableBody, TableCell, TableHead, TableRow } from "@mui/material"
 import { useState } from "react"
-import { getAllocations } from "../services/RoomAllocationService";
-import { AllocationRequestDetails } from "./dialog/AllocationRequestDetails";
 import { RoomManagement } from "./components/RoomManagement";
 import { AllocationRequestManagement } from "./components/AllocationRequestManagement";
 import { AllocationManagement } from "./components/AllocationManagement";
@@ -28,6 +25,9 @@ export const RoomAllocationManagement = ()=>{
                         {c.name}
                     </p>
                 ))}
+            </div>
+            <div>
+                {components.find((c)=> c.id === selectedComponent)?.view}
             </div>
         </div>
     )

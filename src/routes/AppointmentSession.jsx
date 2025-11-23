@@ -15,7 +15,7 @@ export const AppointmentSession = () => {
   const location = useLocation();
 
 
-  const appointment = location?.state?.appointmentDetails || MockAppointment;
+  const appointment = location?.state?.appointmentDetails || null;
 
   const [timeLeft, setTimeLeft] = useState(
     location?.state?.duration || appointment.duration

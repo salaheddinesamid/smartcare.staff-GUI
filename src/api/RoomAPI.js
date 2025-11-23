@@ -1,12 +1,12 @@
 import axios from "axios";
 
-export const RoomAllocationAPI = axios.create({
-    baseURL : "",
+export const RoomAPI = axios.create({
+    baseURL : `${process.env.REACT_APP_HOSPITAL_OPERATIONS_SERVICE}/api/v1/room-management`,
     headers : {},
     timeout : 10000
 })
 
-RoomAllocationAPI.interceptors.response.use(
+RoomAPI.interceptors.response.use(
     (response)=> response,
     (error)=>{
         return Promise.reject({message : "Network Error, Please try again"});
