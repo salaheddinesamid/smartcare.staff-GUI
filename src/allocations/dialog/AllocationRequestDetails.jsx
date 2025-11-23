@@ -152,6 +152,9 @@ export const AllocationRequestDetails = ({ open, onClose, allocation }) => {
       </DialogContent>
 
       <DialogActions>
+        <Button variant="outlined" onClick={onClose}>
+          Cancel
+        </Button>
         <Button variant="outlined" color="error">
           Deny Request
         </Button>
