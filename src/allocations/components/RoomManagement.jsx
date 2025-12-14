@@ -17,6 +17,7 @@ import {
 import { getAllRooms } from "../../services/RoomService";
 import { RoomStatusMapper } from "../utils/RoomStatusMapper";
 import { SearchIcon } from "lucide-react";
+import { NewRoomDialog } from "../dialog/NewRoomDialog";
 
 export const RoomManagement = () => {
   const [rooms, setRooms] = useState([]);
@@ -25,6 +26,15 @@ export const RoomManagement = () => {
   const [statusFilter, setStatusFilter] = useState("ALL");
   const [searchQuery, setSearchQuery] = useState("");
   const [error, setError] = useState("");
+  const [newRoomDialogOpen,setNewRoomDialogOpen] = useState(false);
+
+  const handleOpenNewRoomDialog = ()=>{
+    setNewRoomDialogOpen(true);
+  }
+
+  const handleCloseNewRoomDialog = ()=>{
+    setNewRoomDialogOpen(false);
+  }
 
   // Fetch all rooms
   const fetchRooms = async () => {
@@ -126,6 +136,7 @@ export const RoomManagement = () => {
               variant="contained"
               color="primary"
               sx={{ borderRadius: 3, textTransform: "none", fontWeight: 500 }}
+              onClick={handleOpenNewRoomDialog}
             >
               Add
             </Button>
@@ -165,6 +176,7 @@ export const RoomManagement = () => {
           </TableBody>
         </Table>
       )}
+      <NewRoomDialog open={newRoomDialogOpen} onClose={handleCloseNewRoomDialog} onSuccess={fetchRooms}/>
     </Paper>
   );
 };

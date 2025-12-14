@@ -9,6 +9,9 @@ export const RoomAPI = axios.create({
 RoomAPI.interceptors.response.use(
     (response)=> response,
     (error)=>{
+        if(error.response){
+            return Promise.reject(error.response);
+        }
         return Promise.reject({message : "Network Error, Please try again"});
     }
 )
